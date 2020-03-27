@@ -21,7 +21,7 @@ export const postJoin = async (req, res, next) => {
       const user = await User({
         name,
         email,
-        avatarUrl: file.path
+        avatarUrl: file.path.replace("build/", "../")
       });
       await User.register(user, password);
       next();

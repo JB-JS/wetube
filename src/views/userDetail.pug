@@ -5,7 +5,7 @@ block content
     .user-profile
         div.user-card
             div.avatar
-                img(src=`/${user.avatarUrl}`)
+                img(src=`${user.avatarUrl.repalce("build", '..')}`)
             div.info        
                 h4.profile__username=`${user.name || null}`
                 a(href=`mailto:${user.email}`)=user.email

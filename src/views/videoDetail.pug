@@ -14,7 +14,7 @@ block content
         .user-info
             .avatar
                 a(href=`/users/${video.creator.id}`).profile-img
-                    img(src=video.creator.avatarUrl)
+                    img(src=video.creator.avatarUrl.replace("build", '..'))
             .user-content
                 a(href=`/users/${video.creator.id}`)
                     h1=video.creator.name
@@ -27,7 +27,7 @@ block content
               div.user-comment
                 .avatar
                   a(href=`/users/${video.creator.id}`).profile-img
-                    img(src=video.creator.avatarUrl)
+                    img(src=video.creator.avatarUrl.replace("build", '..'))
                 form#comment-form
                   input(type="text" id="text" placeholder="댓글 추가...").comment_input
                   button 댓글									
