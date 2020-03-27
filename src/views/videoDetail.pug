@@ -1,0 +1,49 @@
+extends layouts/main
+ 
+block content
+    .video-detail__container
+        .video__player
+            video(src=`/${video.fileUrl}` controls="true")
+        .video__info
+            if(loggedUser)
+                if (video.creator.id === loggedUser.id)
+                    a(href=routes.editVideo(video.id))
+                        button.main Edit video
+            h5.video__title=video.title      
+            span.video__views #{video.views} views
+        .user-info
+            .avatar
+                a(href=`/users/${video.creator.id}`).profile-img
+                    img(src=video.creator.avatarUrl)
+            .user-content
+                a(href=`/users/${video.creator.id}`)
+                    h1=video.creator.name
+                p=video.description
+        .video__comments
+            if (loggedUser)
+              span.video__comment-number 
+                span#commentCnt=video.comments.length 
+                |    comments
+              div.user-comment
+                .avatar
+                  a(href=`/users/${video.creator.id}`).profile-img
+                    img(src=video.creator.avatarUrl)
+                form#comment-form
+                  input(type="text" id="text" placeholder="댓글 추가...").comment_input
+                  button 댓글									
+              if video.comments.length === 0
+                p.zero You first comment write
+              .comment#list              
+                each comment in video.comments.reverse()
+                  .content
+                    h1=comment.text
+                    if loggedUser
+                      if loggedUser.id === video.creator.id
+                        span(data-id=comment.id).comment-delete 삭제
+
+
+
+                    
+              
+                  
+                

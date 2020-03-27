@@ -1,0 +1,24 @@
+extends layouts/main 
+include mixins/videoBlock
+
+block content
+    .user-profile
+        div.user-card
+            div.avatar
+                img(src=`/${user.avatarUrl}`)
+            div.info        
+                h4.profile__username=`${user.name || null}`
+                a(href=`mailto:${user.email}`)=user.email
+                if (loggedUser)
+                    if (user.id === loggedUser.id)
+                        a(href="/users/editProfile") Edit Profile
+                        a(href="/users/changePassword") Change Password
+        .home-videos
+            each item in user.videos
+                +videoBlock({
+                    id:item.id,
+                    title:item.title,
+                    views:item.views,
+                    videoFile:item.fileUrl
+                })
+                    

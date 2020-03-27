@@ -1,0 +1,18 @@
+extends layouts/main
+
+block content
+    .form-container
+        div.title
+            h1 Video Upload     
+        form(action=`/videos${routes.upload}`, method="post", enctype="multipart/form-data")
+            div.fileUpload
+                label(for="file") Video File
+                input(type="file", id="file", name="videoFile", required=true, accept="video/*")
+            input(type="text", placeholder="Title", name="title", required=true)
+            textarea(name="description", placeholder="Description", required=true)
+            input(type="submit", value="Upload Video").main
+        div.title
+            h1 Video Recording
+        .record
+            video
+            button.main Start Recording
