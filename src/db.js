@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 import dotenv from "dotenv";
 dotenv.config();
 
-mongoose.connect("mongodb://https://wetube-j.herokuapp.com", {
+mongoose.connect("https://wetube-j.herokuapp.com", {
   useUnifiedTopology: true,
   useNewUrlParser: true,
   useFindAndModify: false
