@@ -2,11 +2,14 @@ import mongoose from "mongoose";
 import dotenv from "dotenv";
 dotenv.config();
 
-mongoose.connect(process.env.MONGO_URL, {
-  useUnifiedTopology: true,
-  useNewUrlParser: true,
-  useFindAndModify: false
-});
+mongoose.connect(
+  "mongodb://<heroku_vczs2fpx>:<q5vvlgfq6icr33quljbnqa3mgn>@ds229609.mlab.com:29609/heroku_vczs2fpx",
+  {
+    useUnifiedTopology: true,
+    useNewUrlParser: true,
+    useFindAndModify: false
+  }
+);
 
 const db = mongoose.connection;
 
